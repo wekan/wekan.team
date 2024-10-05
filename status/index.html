@@ -59,22 +59,31 @@
     <div class="container-fluid bg-white">
         <div class="container px-4 py-5">
 
-
             <h1>WeKan Cloud Status</h1>
 
             <p>2024-10-05:
               <ul>
                 <li>4.00pm GMT+3: SSL/TLS errors at some hosting services.</li>
-                <li>Had to restart router, it was stuck.</li>
                 <li>4.30pm GMT+3: Fixing done, all services back online.</li>
+                <li>Root cause: Had to restart router, it was stuck.</li>
+              </ul>
+            </p>
+            <p>2024-09-23:
+              <ul>
+                <li>4.00pm GMT+3: SSL/TLS errors at some hosting services.</li>
+                <li>4.30pm GMT+3: Fixing done, all services back online.</li>
+                <li>General info: Any WeKan hosting uses custom domain CNAME record (at customer nameserver).</li>
+                <li>Root cause: Getting Let's Encrypt TLS cert did not work with CNAME record (at customer nameserver)
+                    to CNAME record (at WeKan hosting nameserver), it required CNAME record (at customer nameserver) to
+                    A record (at WeKan hosting nameserver) to IP address.</li>
               </ul>
             </p>
             <p>2024-05-21:
               <ul>
-                <li>2024-05-21: SSL/TLS issues at many hosting services.
-                    <a href="https://github.com/wekan/wekan/issues/5415">https://github.com/wekan/wekan/issues/5415</a>
-                </li>
+                <li>2024-05-21: SSL/TLS issues at many hosting services.</li>
+                <li>Notes: <a href="https://github.com/wekan/wekan/issues/5415">https://github.com/wekan/wekan/issues/5415</a></li>
                 <li>2024-05-22: Fixing done, all services back online.</li>
+                <li>Root cause: CloudFlare changed their SSL/TLS features, had to find correct working settings by trial and error.</li>
               </ul>
            </p>
         </div>
