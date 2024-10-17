@@ -61,6 +61,13 @@
 
             <h1>WeKan Cloud Status</h1>
 
+            <h3>2024-10-16</h3>
+            <ul>
+              <li>10.04pm GMT+3: Adding new WeKan hosting customer. Some downtime.</li>
+              <li>2.18am 2024-10-17 GMT+3: All hosting services online</li>
+              <li>Root cause: To get new custom domain kanban.somecompany.com CNAME wekan.fi TLS cert, had to disable and remove Origin Cert from CloudFlare wekan.fi, so that Caddy can get Let's Encrypt cert. Moved Sandstorm from wekan.fi to wekan.dev because it works with CloudFlare wildcard Origin cert. Had to also reboot router and server, to get all working.</li>
+            </ul>
+
             <h3>2024-10-05</h3>
             <ul>
               <li>4.00pm GMT+3: SSL/TLS errors at some hosting services.</li>
