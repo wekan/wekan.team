@@ -68,7 +68,7 @@
                   was previously, because they are making some changes to improve network quality.
                   Moving had minimal downtime.
               <li>Later at evening, there was some downtime.</li>
-              <li>8.15pm GMT+3: Fixing done, all services back online.</li>
+              <li>8.15pm GMT+2: Fixing done, all services back online.</li>
               <li>Root cause:</li>
               <li>1) For Snap, reboot of server made them work.</li>
               <li>2) For RocketChat, lxc containers did not have any network connectivity. Fix was these commands
@@ -79,6 +79,7 @@
 for ipt in iptables iptables-legacy ip6tables ip6tables-legacy; do $ipt --flush; $ipt --flush -t nat; $ipt --delete-chain; $ipt --delete-chain -t nat; $ipt -P FORWARD ACCEPT; $ipt -P INPUT ACCEPT; $ipt -P OUTPUT ACCEPT; done
 
 systemctl reload snap.lxd.daemon
+
 </pre>
 
             <h3>2024-10-16</h3>
