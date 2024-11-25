@@ -71,17 +71,15 @@
               <li>8.15pm GMT+3: Fixing done, all services back online.</li>
               <li>Root cause:</li>
               <li>1) For Snap, reboot of server made them work.</li>
-              <li>2) For RocketChat, lxc containers did not have any network connectivity. To fix it I had to use these commands:</li>
+              <li>2) For RocketChat, lxc containers did not have any network connectivity. Fix was these commands
+                  from this webpage: <a href="https://discuss.linuxcontainers.org/t/containers-do-not-have-outgoing-internet-access/10844/3">
+                  https://discuss.linuxcontainers.org/t/containers-do-not-have-outgoing-internet-access/10844/3</a></li>
            </ul>
 <pre>
 for ipt in iptables iptables-legacy ip6tables ip6tables-legacy; do $ipt --flush; $ipt --flush -t nat; $ipt --delete-chain; $ipt --delete-chain -t nat; $ipt -P FORWARD ACCEPT; $ipt -P INPUT ACCEPT; $ipt -P OUTPUT ACCEPT; done
 
 systemctl reload snap.lxd.daemon
 </pre>
-           <ul>
-             <li>I found this from: <a href="https://discuss.linuxcontainers.org/t/containers-do-not-have-outgoing-internet-access/10844/3">
-                  https://discuss.linuxcontainers.org/t/containers-do-not-have-outgoing-internet-access/10844/3</a></li>
-            </ul>
 
             <h3>2024-10-16</h3>
             <ul>
