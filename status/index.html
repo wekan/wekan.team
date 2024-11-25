@@ -61,11 +61,38 @@
 
             <h1>WeKan Cloud Status</h1>
 
+            <h3>2024-11-25</h3>
+            <ul>
+              <li>At morning, SaaS hosting was moved to different server, because there was notification
+                  that there will be 6 hours downtime at network of server where hosting
+                  was previously, because they are making some changes to improve network quality.
+                  Moving had minimal downtime.
+              <li>Later at evening, there was some downtime.</li>
+              <li>8.15pm GMT+3: Fixing done, all services back online.</li>
+              <li>Root cause:</li>
+              <li>1) For Snap, reboot of server made them work.</li>
+              <li>2) For RocketChat, lxc containers did not have any network connectivity. To fix it I had to use these commands:</li>
+           </ul>
+<pre>
+for ipt in iptables iptables-legacy ip6tables ip6tables-legacy; do $ipt --flush; $ipt --flush -t nat; $ipt --delete-chain; $ipt --delete-chain -t nat; $ipt -P FORWARD ACCEPT; $ipt -P INPUT ACCEPT; $ipt -P OUTPUT ACCEPT; done
+
+systemctl reload snap.lxd.daemon
+</pre>
+           <ul>
+             <li>I found this from: <a href="https://discuss.linuxcontainers.org/t/containers-do-not-have-outgoing-internet-access/10844/3">
+                  https://discuss.linuxcontainers.org/t/containers-do-not-have-outgoing-internet-access/10844/3</a></li>
+            </ul>
+
             <h3>2024-10-16</h3>
             <ul>
               <li>10.04pm GMT+3: Adding new WeKan hosting customer. Some downtime.</li>
               <li>2.18am 2024-10-17 GMT+3: All hosting services online</li>
-              <li>Root cause: To get new custom domain kanban.somecompany.com CNAME wekan.fi TLS cert, had to disable and remove Origin Cert from CloudFlare wekan.fi, so that Caddy can get Let's Encrypt cert. Moved Sandstorm from wekan.fi to wekan.dev because it works with CloudFlare wildcard Origin cert. Had to also reboot router and server, to get all working.</li>
+              <li>Root cause: To get new custom domain kanban.somecompany.com
+                  CNAME wekan.fi TLS cert, had to disable and remove Origin Cert
+                  from CloudFlare wekan.fi, so that Caddy can get Let's Encrypt cert.
+                  Moved Sandstorm from wekan.fi to wekan.dev because it works with
+                  CloudFlare wildcard Origin cert. Had to also reboot router and
+                  server, to get all working.</li>
             </ul>
 
             <h3>2024-10-05</h3>
